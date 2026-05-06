@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+    <!-- Мета-теги для кодування, viewport, автора та опису -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Зв'яжіться зі мною через форму зворотного зв'язку">
@@ -8,6 +9,7 @@
     <title>Контакти — Портфоліо</title>
 </head>
 <body>
+    <!-- Заголовок сторінки з навігацією -->
     <header>
         <h1>Зворотний зв'язок</h1>
         <nav>
@@ -19,46 +21,92 @@
         </nav>
     </header>
 
+    <!-- Основний вміст сторінки -->
     <main>
-        <section>
-            <h2>Напишіть мені</h2>
-            <form action="#" method="post">
-                <fieldset>
-                    <legend>Контактна інформація</legend>
-                    
-                    <p>
-                        <label for="name">Ім'я:</label>
-                        <input type="text" id="name" name="user_name" placeholder="Ваше ім'я" required>
-                    </p>
-                    
-                    <p>
-                        <label for="email">Email:</label>
-                        <input type="email" id="email" name="user_email" placeholder="example@mail.com" required>
-                    </p>
+        <!-- Стаття з формою зворотного зв'язку -->
+        <article>
+            <!-- Секція з формою -->
+            <section>
+                <h2>Напишіть мені</h2>
+                <form action="#" method="post">
+                    <!-- Група полів контактної інформації -->
+                    <fieldset>
+                        <legend>Контактна інформація</legend>
+                        
+                        <p>
+                            <label for="name">Ім'я:</label>
+                            <input type="text" id="name" name="user_name" placeholder="Ваше ім'я" required>
+                        </p>
+                        
+                        <p>
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="user_email" placeholder="example@mail.com" required>
+                        </p>
 
-                    <p>
-                        <label for="subject">Тема питання:</label>
-                        <select id="subject" name="subject">
-                            <option value="job">Пропозиція роботи</option>
-                            <option value="education">Навчання</option>
-                            <option value="other">Інше</option>
-                        </select>
-                    </p>
-                </fieldset>
+                        <p>
+                            <label for="phone">Телефон:</label>
+                            <input type="tel" id="phone" name="user_phone" placeholder="+380123456789">
+                        </p>
 
-                <fieldset>
-                    <legend>Ваше повідомлення</legend>
-                    <p>
-                        <label for="message">Повідомлення:</label><br>
-                        <textarea id="message" name="message" rows="5" cols="30"></textarea>
-                    </p>
-                    <button type="submit">Надіслати</button>
-                    <button type="reset">Очистити</button>
-                </fieldset>
-            </form>
-        </section>
+                        <p>
+                            <label>Стать:</label><br>
+                            <input type="radio" id="male" name="gender" value="male">
+                            <label for="male">Чоловік</label><br>
+                            <input type="radio" id="female" name="gender" value="female">
+                            <label for="female">Жінка</label>
+                        </p>
+
+                        <p>
+                            <label for="subject">Тема питання:</label>
+                            <select id="subject" name="subject">
+                                <option value="job">Пропозиція роботи</option>
+                                <option value="education">Навчання</option>
+                                <option value="other">Інше</option>
+                            </select>
+                        </p>
+
+                        <p>
+                            <label>Інтереси:</label><br>
+                            <input type="checkbox" id="html" name="interests" value="html">
+                            <label for="html">HTML</label><br>
+                            <input type="checkbox" id="css" name="interests" value="css">
+                            <label for="css">CSS</label><br>
+                            <input type="checkbox" id="js" name="interests" value="js">
+                            <label for="js">JavaScript</label>
+                        </p>
+                    </fieldset>
+
+                    <!-- Група поля повідомлення -->
+                    <fieldset>
+                        <legend>Ваше повідомлення</legend>
+                        <p>
+                            <label for="message">Повідомлення:</label><br>
+                            <textarea id="message" name="message" rows="5" cols="30"></textarea>
+                        </p>
+                        <button type="submit">Надіслати</button>
+                        <button type="reset">Очистити</button>
+                    </fieldset>
+                </form>
+            </section>
+
+            <!-- Секція з контактами та мультимедіа -->
+            <section>
+                <h2>Мої контакти</h2>
+                <!-- Зображення контактів -->
+                <figure>
+                    <img src="images/contact.jpg" alt="Контактне фото" width="200">
+                    <figcaption>Мої контактні дані</figcaption>
+                </figure>
+                <!-- Аудіо привітання -->
+                <audio controls>
+                    <source src="audio/contact.mp3" type="audio/mpeg">
+                    Ваш браузер не підтримує аудіо.
+                </audio>
+            </section>
+        </article>
     </main>
 
+    <!-- Підвал сторінки -->
     <footer>
         <p>&copy; 2026 kirussay. Всі права захищені.</p>
     </footer>

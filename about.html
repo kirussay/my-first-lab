@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
+    <!-- Мета-теги для кодування, viewport, автора та опису -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Детальна інформація про освіту та навички">
@@ -8,6 +9,7 @@
     <title>Про мене — Портфоліо</title>
 </head>
 <body>
+    <!-- Заголовок сторінки з навігацією -->
     <header>
         <h1>Про мене</h1>
         <nav>
@@ -19,49 +21,81 @@
         </nav>
     </header>
 
+    <!-- Основний вміст сторінки -->
     <main>
-        <section>
-            <h2>Освіта та досвід</h2>
-            <p>Тут ви можете знайти інформацію про мої професійні навички та навчання.</p>
-            
-            <table>
-                <caption>Мої технічні навички</caption>
-                <thead>
-                    <tr>
-                        <th>Технологія</th>
-                        <th>Рівень</th>
-                        <th>Досвід</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>HTML5</td>
-                        <td>Початківець</td>
-                        <td>1 місяць</td>
-                    </tr>
-                    <tr>
-                        <td>Git</td>
-                        <td>Початківець</td>
-                        <td>1 тиждень</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
+        <!-- Стаття з інформацією про освіту та навички -->
+        <article>
+            <section>
+                <h2>Освіта та досвід</h2>
+                <p>Тут ви можете знайти інформацію про мої професійні навички та навчання.</p>
+                
+                <!-- Таблиця з технічними навичками -->
+                <table>
+                    <caption>Мої технічні навички</caption>
+                    <thead>
+                        <tr>
+                            <th>Технологія</th>
+                            <th>Рівень</th>
+                            <th>Досвід</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTML5</td>
+                            <td>Початківець</td>
+                            <td>1 місяць</td>
+                        </tr>
+                        <tr>
+                            <td>Git</td>
+                            <td>Початківець</td>
+                            <td>1 тиждень</td>
+                        </tr>
+                        <tr>
+                            <td>CSS</td>
+                            <td>Початківець</td>
+                            <td>2 тижні</td>
+                        </tr>
+                    </tbody>
+                </table>
 
+                <!-- Список визначень технологій -->
+                <dl>
+                    <dt>HTML5</dt>
+                    <dd>Мова розмітки для створення веб-сторінок.</dd>
+                    <dt>Git</dt>
+                    <dd>Система контролю версій для розробки.</dd>
+                    <dt>CSS</dt>
+                    <dd>Мова стилізації для оформлення веб-сторінок.</dd>
+                </dl>
+            </section>
+
+            <!-- Секція з відео-презентацією -->
+            <section>
+                <h2>Відео-презентація</h2>
+                <video controls width="400">
+                    <source src="video/intro.mp4" type="video/mp4">
+                    Ваш браузер не підтримує відео.
+                </video>
+            </section>
+
+            <!-- Секція з аудіо -->
+            <section>
+                <h2>Аудіо</h2>
+                <audio controls>
+                    <source src="audio/intro.mp3" type="audio/mpeg">
+                    Ваш браузер не підтримує аудіо.
+                </audio>
+            </section>
+        </article>
+
+        <!-- Бічна панель з цікавим фактом -->
         <aside>
             <h3>Цікавий факт</h3>
             <p>Я вирішив стати фронтенд-розробником у 2026 році!</p>
         </aside>
     </main>
     
-    <section>
-        <h2>Відео-презентація</h2>
-            <video controls width="400">
-        <source src="video/intro.mp4" type="video/mp4">
-        Ваш браузер не підтримує відео.
-             </video>
-    </section>
-    
+    <!-- Підвал сторінки -->
     <footer>
         <p>&copy; 2026 kirussay. Всі права захищені.</p>
     </footer>
