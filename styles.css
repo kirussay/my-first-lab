@@ -131,6 +131,11 @@ select {
     transition: border-color 0.3s, box-shadow 0.3s;
 }
 
+/* Атрибутний селектор для required */
+input[required] {
+    border-left: 3px solid #ff6b6b;
+}
+
 input:focus {
     border-color: #007bff;
     box-shadow: 0 0 8px rgba(0,123,255,0.25);
@@ -170,4 +175,39 @@ main {
 
 h1 { font-size: 2.5rem; margin-bottom: 1rem; }
 h2 { font-size: 2rem; color: #007bff; }
+
+/* Сусідній селектор (adjacent sibling) */
+h2 + p {
+    font-style: italic;
+    color: #666;
+}
+
 p { font-size: 1.1rem; margin-bottom: 1.2rem; }
+
+/* Псевдоелемент ::before для blockquote */
+blockquote::before {
+    content: '"';
+    font-size: 3rem;
+    color: #007bff;
+    position: absolute;
+    margin-top: -0.5rem;
+    margin-left: -1rem;
+}
+
+blockquote {
+    position: relative;
+    font-style: italic;
+    padding-left: 2rem;
+}
+
+/* 10. СПЕЦИФІЧНІСТЬ: Приклад перевизначення */
+/* Спочатку клас .highlight */
+.highlight {
+    background-color: yellow;
+}
+
+/* Потім селектор тег.класс (більша специфічність) */
+p.highlight {
+    background-color: lightgreen;
+    font-weight: bold;
+}
