@@ -143,6 +143,11 @@ nav a:hover::after {
     width: 100%;
 }
 
+nav {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
 /* 5. СЕКТОР "HERO" (Ідентифікатор) */
 /* Не забудь додати id="hero" у <section> на index.html */
 #hero {
@@ -157,6 +162,10 @@ table {
     border-collapse: collapse;
     margin: var(--spacing-xl) 0;
     background: white;
+}
+
+.table-container {
+    overflow-x: auto;
 }
 
 th, td {
