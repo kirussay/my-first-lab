@@ -148,6 +148,16 @@ nav {
     margin: 0 auto;
 }
 
+a {
+    transition: color 0.3s ease, background-color 0.3s ease, transform 0.3s ease;
+}
+
+button,
+.btn {
+    transition: var(--transition);
+    cursor: pointer;
+}
+
 /* 5. СЕКТОР "HERO" (Ідентифікатор) */
 /* Не забудь додати id="hero" у <section> на index.html */
 #hero {
@@ -231,6 +241,7 @@ figure {
     margin: 20px 0;
     overflow: hidden;
     border-radius: var(--border-radius-xl);
+    grid-area: figure;
 }
 
 figcaption {
@@ -255,12 +266,19 @@ main {
     margin: 5rem auto 2rem; /* Центрування контенту */
     padding: 0 var(--spacing-xl);
     display: grid;
-    grid-template-areas: "article" "aside";
+    grid-template-areas:
+      "article"
+      "figure"
+      "aside";
     gap: var(--spacing-large);
 }
 
 article {
   grid-area: article;
+}
+
+figure {
+  grid-area: figure;
 }
 
 aside {
@@ -317,7 +335,10 @@ p.highlight {
 @media (min-width: 1024px) {
   /* Для десктопов: grid с сайдбаром */
   main {
-    grid-template-areas: "article aside";
+    grid-template-areas:
+      "article aside"
+      "figure aside";
     grid-template-columns: 2fr 1fr;
+    align-items: start;
   }
 }
