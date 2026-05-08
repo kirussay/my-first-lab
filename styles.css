@@ -1,19 +1,92 @@
 /* 1. ПІДКЛЮЧЕННЯ ШРИФТІВ */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+/* Переменные */
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #555;
+  --background-color: #fdfdfd;
+  --text-color: #333;
+  --header-bg: #ffffff;
+  --hero-bg-start: #f5f7fa;
+  --hero-bg-end: #c3cfe2;
+  --table-border: #ddd;
+  --table-header-bg: var(--primary-color);
+  --table-even-row: #f8f9fa;
+  --table-hover: #e9ecef;
+  --form-border: #ccc;
+  --form-focus-shadow: rgba(0,123,255,0.25);
+  --blockquote-color: var(--primary-color);
+  --highlight-bg: yellow;
+  --highlight-p-bg: lightgreen;
+  --font-family: 'Roboto', Arial, sans-serif;
+  --font-weight-bold: 700;
+  --line-height: 1.6;
+  --spacing-small: 0.5rem;
+  --spacing-medium: 1rem;
+  --spacing-large: 1.5rem;
+  --spacing-xl: 2rem;
+  --border-radius: 4px;
+  --border-radius-large: 8px;
+  --border-radius-xl: 10px;
+  --box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  --transition: all 0.3s ease;
+}
+
 /* 2. БЛОКОВА МОДЕЛЬ (Box Model) */
 *, *::before, *::after {
     box-sizing: border-box;
 }
 
+/* Адаптивные картинки */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Анимация появления */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 body {
     margin: 0;
     padding: 0;
-    font-family: 'Roboto', Arial, sans-serif;
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #333;
-    background-color: #fdfdfd;
+    font-family: var(--font-family);
+    font-size: clamp(1rem, 2vw, 1.1rem);
+    line-height: var(--line-height);
+    color: var(--text-color);
+    background-color: var(--background-color);
+    animation: fadeIn 1s ease-in;
+}
+
+/* CSS Grid для основной структуры */
+body {
+  display: grid;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  min-height: 100vh;
+}
+
+header {
+  grid-area: header;
+}
+
+main {
+  grid-area: main;
+}
+
+footer {
+  grid-area: footer;
 }
 
 /* 3. ПОЗИЦІОНУВАННЯ: ФІКСОВАНИЙ ХЕДЕР */
@@ -21,37 +94,38 @@ header {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: #ffffff;
+    background-color: var(--header-bg);
     z-index: 1000;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    padding: 0.5rem 2rem;
+    box-shadow: var(--box-shadow);
+    padding: var(--spacing-small) var(--spacing-xl);
 }
 
-/* 4. НАВІГАЦІЯ */
+/* 4. НАВІГАЦІЯ на Flexbox */
 nav ul {
     list-style: none;
     padding: 0;
     margin: 0;
     display: flex;
     justify-content: center;
+    gap: var(--spacing-large); /* Используем gap */
 }
 
 /* Дочірній селектор (комбінований) */
 nav ul > li {
-    margin: 0 1.5rem;
+    margin: 0; /* Убираем margin, используем gap */
 }
 
 nav a {
     text-decoration: none;
-    color: #555;
-    font-weight: 700;
-    transition: all 0.3s ease;
+    color: var(--secondary-color);
+    font-weight: var(--font-weight-bold);
+    transition: var(--transition);
     position: relative;
 }
 
 /* Псевдоклас :hover та псевдоелемент ::after */
 nav a:hover {
-    color: #007bff;
+    color: var(--primary-color);
 }
 
 nav a::after {
@@ -61,7 +135,7 @@ nav a::after {
     height: 2px;
     bottom: -5px;
     left: 0;
-    background-color: #007bff;
+    background-color: var(--primary-color);
     transition: width 0.3s;
 }
 
@@ -72,50 +146,50 @@ nav a:hover::after {
 /* 5. СЕКТОР "HERO" (Ідентифікатор) */
 /* Не забудь додати id="hero" у <section> на index.html */
 #hero {
-    padding: 6rem 2rem 3rem; /* Збільшений відступ зверху через fixed header */
+    padding: 6rem var(--spacing-xl) 3rem; /* Збільшений відступ зверху через fixed header */
     text-align: center;
-    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    background: linear-gradient(135deg, var(--hero-bg-start) 0%, var(--hero-bg-end) 100%);
 }
 
 /* 6. ТАБЛИЦІ (Ефект зебри) */
 table {
     width: 100%;
     border-collapse: collapse;
-    margin: 2rem 0;
+    margin: var(--spacing-xl) 0;
     background: white;
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--table-border);
     padding: 12px;
     text-align: left;
 }
 
 th {
-    background-color: #007bff;
+    background-color: var(--table-header-bg);
     color: white;
 }
 
 /* Псевдоклас :nth-child */
 tbody tr:nth-child(even) {
-    background-color: #f8f9fa;
+    background-color: var(--table-even-row);
 }
 
 tbody tr:hover {
-    background-color: #e9ecef; /* Інтерактивність */
+    background-color: var(--table-hover); /* Інтерактивність */
 }
 
 /* 7. ФОРМИ */
 fieldset {
-    border: 2px solid #007bff;
-    border-radius: 8px;
-    margin-bottom: 1.5rem;
-    padding: 1.5rem;
+    border: 2px solid var(--primary-color);
+    border-radius: var(--border-radius-large);
+    margin-bottom: var(--spacing-large);
+    padding: var(--spacing-large);
 }
 
 legend {
-    font-weight: bold;
-    color: #007bff;
+    font-weight: var(--font-weight-bold);
+    color: var(--primary-color);
     padding: 0 10px;
 }
 
@@ -126,9 +200,9 @@ textarea,
 select {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    transition: border-color 0.3s, box-shadow 0.3s;
+    border: 1px solid var(--form-border);
+    border-radius: var(--border-radius);
+    transition: var(--transition);
 }
 
 /* Атрибутний селектор для required */
@@ -137,8 +211,8 @@ input[required] {
 }
 
 input:focus {
-    border-color: #007bff;
-    box-shadow: 0 0 8px rgba(0,123,255,0.25);
+    border-color: var(--primary-color);
+    box-shadow: 0 0 8px var(--form-focus-shadow);
     outline: none;
 }
 
@@ -147,7 +221,7 @@ figure {
     position: relative;
     margin: 20px 0;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: var(--border-radius-xl);
 }
 
 figcaption {
@@ -166,15 +240,26 @@ figure:hover figcaption {
     opacity: 1;
 }
 
-/* 9. ТИПОГРАФІКА (rem) */
+/* 9. ТИПОГРАФІКА (rem) с Fluid Typography */
 main {
     max-width: 1000px;
     margin: 5rem auto 2rem; /* Центрування контенту */
-    padding: 0 20px;
+    padding: 0 var(--spacing-xl);
+    display: grid;
+    grid-template-areas: "article" "aside";
+    gap: var(--spacing-large);
 }
 
-h1 { font-size: 2.5rem; margin-bottom: 1rem; }
-h2 { font-size: 2rem; color: #007bff; }
+article {
+  grid-area: article;
+}
+
+aside {
+  grid-area: aside;
+}
+
+h1 { font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: var(--spacing-medium); }
+h2 { font-size: clamp(1.2rem, 4vw, 2rem); color: var(--primary-color); }
 
 /* Сусідній селектор (adjacent sibling) */
 h2 + p {
@@ -182,13 +267,13 @@ h2 + p {
     color: #666;
 }
 
-p { font-size: 1.1rem; margin-bottom: 1.2rem; }
+p { font-size: clamp(1rem, 2vw, 1.1rem); margin-bottom: var(--spacing-medium); }
 
 /* Псевдоелемент ::before для blockquote */
 blockquote::before {
     content: '"';
-    font-size: 3rem;
-    color: #007bff;
+    font-size: clamp(2rem, 6vw, 3rem);
+    color: var(--blockquote-color);
     position: absolute;
     margin-top: -0.5rem;
     margin-left: -1rem;
@@ -197,17 +282,33 @@ blockquote::before {
 blockquote {
     position: relative;
     font-style: italic;
-    padding-left: 2rem;
+    padding-left: var(--spacing-xl);
 }
 
 /* 10. СПЕЦИФІЧНІСТЬ: Приклад перевизначення */
 /* Спочатку клас .highlight */
 .highlight {
-    background-color: yellow;
+    background-color: var(--highlight-bg);
 }
 
 /* Потім селектор тег.класс (більша специфічність) */
 p.highlight {
-    background-color: lightgreen;
-    font-weight: bold;
+    background-color: var(--highlight-p-bg);
+    font-weight: var(--font-weight-bold);
+}
+
+/* Media queries для планшетов и десктопов */
+@media (min-width: 768px) {
+  /* Для планшетов: возможно, увеличить шрифты или отступы */
+  main {
+    padding: 0 var(--spacing-xl);
+  }
+}
+
+@media (min-width: 1024px) {
+  /* Для десктопов: grid с сайдбаром */
+  main {
+    grid-template-areas: "article aside";
+    grid-template-columns: 2fr 1fr;
+  }
 }
