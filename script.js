@@ -288,3 +288,115 @@ console.log('Анализированные пользователи:', analyzed
 // ============================================================
 console.log('%c\n=== КОНЕЦ ЛАБОРАТОРНОЙ РАБОТЫ №4 ===\n', 'color: #00AA00; font-size: 16px; font-weight: bold;');
 console.log('%cВсе задачи выполнены! Откройте консоль для просмотра результатов.', 'color: #00AA00; font-size: 12px;');
+
+// ============================================================
+// ЛАБОРАТОРНАЯ РАБОТА №5: ДОПОЛНИТЕЛЬНЫЕ ФУНКЦИИ JAVASCRIPT
+// ============================================================
+console.log('%c=== НАЧАЛО ЛАБОРАТОРНОЙ РАБОТЫ №5 ===', 'color: #00AA00; font-size: 16px; font-weight: bold;');
+
+// Получаем элементы DOM
+const todoInput = document.getElementById('todo-input');
+const addBtn = document.getElementById('add-btn');
+const todoList = document.getElementById('todo-list');
+const themeToggle = document.getElementById('theme-toggle');
+
+// Функция для загрузки задач из LocalStorage
+function loadTodos() {
+    const todos = JSON.parse(localStorage.getItem('todos')) || [];
+    todos.forEach(todo => {
+        addTodoToDOM(todo.text, todo.completed);
+    });
+}
+
+// Функция для сохранения задач в LocalStorage
+function saveTodos() {
+    const todos = [];
+    const items = todoList.querySelectorAll('li');
+    items.forEach(item => {
+        const text = item.querySelector('span').textContent;
+        const completed = item.classList.contains('completed');
+        todos.push({ text, completed });
+    });
+    localStorage.setItem('todos', JSON.stringify(todos));
+}
+
+// Функция для добавления задачи в DOM
+function addTodoToDOM(text, completed = false) {
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <span>${text}</span>
+        <button class="delete-btn">Видалити</button>
+    `;
+    if (completed) {
+        li.classList.add('completed');
+    }
+    todoList.appendChild(li);
+}
+
+// Обработчик для кнопки "Додати"
+addBtn.addEventListener('click', () => {
+    const text = todoInput.value.trim();
+    if (text) {
+        addTodoToDOM(text);
+        saveTodos();
+        todoInput.value = '';
+    }
+});
+
+// Делегирование событий для списка задач
+todoList.addEventListener('click', (e) => {
+    if (e.target.tagName === 'LI' || e.target.tagName === 'SPAN') {
+        // Отметка как выполненной
+        const li = e.target.closest('li');
+        li.classList.toggle('completed');
+        saveTodos();
+    } else if (e.target.classList.contains('delete-btn')) {
+        // Удаление задачи
+        e.target.closest('li').remove();
+        saveTodos();
+    }
+});
+
+// Функция для переключения темы
+function toggleTheme() {
+    document.body.classList.toggle('dark-mode');
+    const isDark = document.body.classList.contains('dark-mode');
+    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+
+// Загрузка темы из LocalStorage
+function loadTheme() {
+    const theme = localStorage.getItem('theme');
+    if (theme === 'dark') {
+        document.body.classList.add('dark-mode');
+    }
+}
+
+// Обработчик для кнопки переключения темы
+themeToggle.addEventListener('click', toggleTheme);
+
+// Асинхронная функция для загрузки данных из API
+async function fetchData() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/todos?_limit=5');
+        const data = await response.json();
+        console.log('Загруженные данные из API:', data);
+        
+        // Добавляем загруженные задачи в список
+        data.forEach(todo => {
+            addTodoToDOM(todo.title, todo.completed);
+        });
+        saveTodos();
+    } catch (error) {
+        console.error('Ошибка при загрузке данных:', error);
+    }
+}
+
+// Загружаем данные при загрузке страницы
+document.addEventListener('DOMContentLoaded', () => {
+    loadTheme();
+    loadTodos();
+    fetchData();
+});
+
+console.log('%cЛабораторная работа №5 загружена!', 'color: #00AA00; font-size: 14px;');

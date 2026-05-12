@@ -342,3 +342,67 @@ p.highlight {
     align-items: start;
   }
 }
+
+#todo-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-bottom: 1px solid var(--form-border);
+    animation: fadeIn 0.5s ease;
+}
+
+.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+.delete-btn {
+    background: #ff6b6b;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.delete-btn:hover {
+    background: #ff5252;
+}
+
+#theme-toggle {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: var(--border-radius);
+    cursor: pointer;
+    margin-bottom: var(--spacing-medium);
+    transition: var(--transition);
+}
+
+#theme-toggle:hover {
+    background: #0056b3;
+}
+
+.dark-mode {
+    background-color: #1a1a1a;
+    color: #ffffff;
+}
+
+/* Темная тема переменные */
+.dark-mode {
+  --primary-color: #4a90e2;
+  --secondary-color: #cccccc;
+  --background-color: #1a1a1a;
+  --text-color: #ffffff;
+  --header-bg: #2a2a2a;
+  --hero-bg-start: #2a2a2a;
+  --hero-bg-end: #4a4a4a;
+  --table-border: #555;
+  --table-header-bg: var(--primary-color);
+  --table-even-row: #333;
+  --table-hover: #444;
+  --form-border: #666;
+  --blockquote-color: var(--primary-color);
+}
